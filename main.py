@@ -1,6 +1,8 @@
 import streamlit as st
 import re
 
+CORRECT_PASSWORD = "sagnik"
+
 def process_text_data(text_data):
     
     lines = text_data.split("\n")
@@ -58,17 +60,23 @@ def parse_text_data(text):
 
 
 def main():
-    st.title('Sonar Text Data Processor')
+    st.title('Text Data Processor')
 
-    text_data = st.text_area('Paste Text Data Here')
+    password = st.text_input("Password:", type="password")
 
-    if st.button('Process Data'):
-        if text_data.strip() == '':
-            st.warning('Please paste some text data.')
-        else:
-            processed_text = process_text_data(text_data)
-            dataframe = parse_text_data(processed_text)
-            st.dataframe(dataframe)
+    if password.lower() == CORRECT_PASSWORD:
+        
+        text_data = st.text_area('Paste Text Data Here')
+
+        if st.button('Process Data'):
+            if text_data.strip() == '':
+                st.warning('Please paste some text data.')
+            else:
+                processed_text = process_text_data(text_data)
+                dataframe = parse_text_data(processed_text)
+                st.dataframe(dataframe)
+    elif password != "":
+        st.warning("Incorrect password. Please try again.")
 
 if __name__ == '__main__':
     main()

@@ -58,7 +58,7 @@ def parse_text_data(text):
 
 
 def main():
-    st.title('Text Data Processor')
+    st.title('Sonar Text Data Processor')
 
     text_data = st.text_area('Paste Text Data Here')
 

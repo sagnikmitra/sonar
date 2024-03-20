@@ -60,7 +60,7 @@ def parse_text_data(text):
 
 
 def main():
-    st.title('Text Data Processor')
+    st.title('Sonar Issues Processor')
 
     password = st.text_input("Password:", type="password")
 
